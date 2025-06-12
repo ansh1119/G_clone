@@ -11,8 +11,8 @@ import java.util.Map;
 @Document
 public class User {
 
+    private String name;
     @Id
-    private ObjectId id;
     private String email;
     private String password;
     private String profileImage;
@@ -31,8 +31,8 @@ public class User {
     private Map<String, Float> muscleStrengthScores;
     private Map<String, Date> muscleRecoveryStatus;
 
-    public User(ObjectId id, String email, String password, String profileImage, int age, Height height, String gender, int weight, int weeklyGoal, ObjectId currentRoutineId, List<ObjectId> workoutIds, List<ObjectId> friendIds, List<ObjectId> favoriteWorkoutIds, float bmi, float currentStrengthScore, List<StrengthScoreEntry> strengthScoreHistory, Map<String, Float> muscleStrengthScores, Map<String, Date> muscleRecoveryStatus) {
-        this.id = id;
+    public User(String name,String email, String password, String profileImage, int age, Height height, String gender, int weight, int weeklyGoal, ObjectId currentRoutineId, List<ObjectId> workoutIds, List<ObjectId> friendIds, List<ObjectId> favoriteWorkoutIds, float bmi, float currentStrengthScore, List<StrengthScoreEntry> strengthScoreHistory, Map<String, Float> muscleStrengthScores, Map<String, Date> muscleRecoveryStatus) {
+        this.name=name;
         this.email = email;
         this.password = password;
         this.profileImage = profileImage;
@@ -52,36 +52,45 @@ public class User {
         this.muscleRecoveryStatus = muscleRecoveryStatus;
     }
 
-    public User( String email, String password, String profileImage, int age, Height height, String gender, int weight, int weeklyGoal, ObjectId currentRoutineId, List<ObjectId> workoutIds, List<ObjectId> friendIds, List<ObjectId> favoriteWorkoutIds, float bmi, float currentStrengthScore, List<StrengthScoreEntry> strengthScoreHistory, Map<String, Float> muscleStrengthScores, Map<String, Date> muscleRecoveryStatus) {
-        this.email = email;
-        this.password = password;
-        this.profileImage = profileImage;
-        this.age = age;
-        this.height = height;
-        this.gender = gender;
-        this.weight = weight;
-        this.weeklyGoal = weeklyGoal;
-        this.currentRoutineId = currentRoutineId;
-        this.workoutIds = workoutIds;
-        this.friendIds = friendIds;
-        this.favoriteWorkoutIds = favoriteWorkoutIds;
-        this.bmi = bmi;
-        this.currentStrengthScore = currentStrengthScore;
-        this.strengthScoreHistory = strengthScoreHistory;
-        this.muscleStrengthScores = muscleStrengthScores;
-        this.muscleRecoveryStatus = muscleRecoveryStatus;
-    }
+//    public User( String name,String email, String password, String profileImage, int age, Height height, String gender, int weight, int weeklyGoal, ObjectId currentRoutineId, List<ObjectId> workoutIds, List<ObjectId> friendIds, List<ObjectId> favoriteWorkoutIds, float bmi, float currentStrengthScore, List<StrengthScoreEntry> strengthScoreHistory, Map<String, Float> muscleStrengthScores, Map<String, Date> muscleRecoveryStatus) {
+//        this.email = email;
+//        this.name=name;
+//        this.password = password;
+//        this.profileImage = profileImage;
+//        this.age = age;
+//        this.height = height;
+//        this.gender = gender;
+//        this.weight = weight;
+//        this.weeklyGoal = weeklyGoal;
+//        this.currentRoutineId = currentRoutineId;
+//        this.workoutIds = workoutIds;
+//        this.friendIds = friendIds;
+//        this.favoriteWorkoutIds = favoriteWorkoutIds;
+//        this.bmi = bmi;
+//        this.currentStrengthScore = currentStrengthScore;
+//        this.strengthScoreHistory = strengthScoreHistory;
+//        this.muscleStrengthScores = muscleStrengthScores;
+//        this.muscleRecoveryStatus = muscleRecoveryStatus;
+//    }
 
 
     public User(){}
 
-    public ObjectId getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(ObjectId id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
+
+//    public ObjectId getId() {
+//        return id;
+//    }
+//
+//    public void setId(ObjectId id) {
+//        this.id = id;
+//    }
 
     public String getEmail() {
         return email;
