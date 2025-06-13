@@ -1,9 +1,8 @@
 package com.example.G_Clone.service;
 
 
-import com.example.G_Clone.entity.LoginRequest;
-import com.example.G_Clone.entity.User;
-import com.example.G_Clone.repository.UserRepository;
+import com.example.G_Clone.entity.*;
+import com.example.G_Clone.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +20,18 @@ public class UserService {
 
     @Autowired
     JWTService service;
+
+    @Autowired
+    RoutineRepository routineRepository;
+
+    @Autowired
+    ExerciseRepository exerciseRepository;
+
+    @Autowired
+    WorkoutRepository workoutRepository;
+
+    @Autowired
+    UserRoutineRepository userRoutineRepository;
 
     private static final PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
 
@@ -54,4 +65,41 @@ public class UserService {
         // Return JWT token
         return service.generateToken(user.getEmail());
     }
+
+    public void createRoutine(RoutineTemplate routine) {
+        routineRepository.save(routine);
+    }
+
+    public void createExercise(Exercise exercise) {
+        exerciseRepository.save(exercise);
+    }
+
+    public void createWorkout(Workout workout) {
+        workoutRepository.save(workout);
+    }
+
+    public void chooseRoutine(String email, String routineTemplateId) {
+        // Fetch user
+        User user = repository.findByEmail(email).orElseThrow(() -> new RuntimeException("Invalid user"));
+
+        // Fetch routine template
+        RoutineTemplate template = (RoutineTemplate) routineRepository.findById(routineTemplateId).orElseThrow(() -> new RuntimeException("Invalid routine template"));
+
+        // Create a new UserRoutine from the template
+        UserRoutine userRoutine = new UserRoutine();
+        userRoutine.setName(template.getName());
+        userRoutine.setDescription(template.getDescription());
+        userRoutine.setDaysPerWeek(template.getDaysPerWeek());
+        userRoutine.setLevel(template.getLevel());
+        userRoutine.setWorkoutTemplateIds(template.getWorkoutTemplateIds());
+        userRoutine.setUserEmail(user.getEmail()); // Link the user
+
+        // Save the user routine
+        UserRoutine savedUserRoutine = userRoutineRepository.save(userRoutine);
+
+        // Set user's current routine
+        user.setCurrentRoutineId(savedUserRoutine.getId());
+        repository.save(user);
+    }
+
 }

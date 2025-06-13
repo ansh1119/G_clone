@@ -1,8 +1,7 @@
 package com.example.G_Clone.controller;
 
 
-import com.example.G_Clone.entity.LoginRequest;
-import com.example.G_Clone.entity.User;
+import com.example.G_Clone.entity.*;
 import com.example.G_Clone.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,5 +27,20 @@ public class PublicController {
     public String verifyUser(@RequestBody LoginRequest loginRequest){
         System.out.println("i am here");
         return service.verify(loginRequest);
+    }
+
+    @PostMapping("/add-routine")
+    public void createRoutine(@RequestBody RoutineTemplate routine){
+        service.createRoutine(routine);
+    }
+
+    @PostMapping("/add-exercise")
+    public void createExercise(@RequestBody Exercise exercise){
+        service.createExercise(exercise);
+    }
+
+    @PostMapping("/add-workout")
+    public void createWorkout(@RequestBody Workout workout){
+        service.createWorkout(workout);
     }
 }
