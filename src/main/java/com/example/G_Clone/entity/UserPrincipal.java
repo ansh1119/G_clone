@@ -27,7 +27,7 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getName();
+        return user.getEmail(); // ✅ match what's stored in the JWT
     }
 
     @Override

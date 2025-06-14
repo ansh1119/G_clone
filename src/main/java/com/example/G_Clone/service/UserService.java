@@ -80,7 +80,7 @@ public class UserService {
 
     public void chooseRoutine(String email, String routineTemplateId) {
         // Fetch user
-        User user = repository.findByEmail(email).orElseThrow(() -> new RuntimeException("Invalid user"));
+        User user = repository.findById(email).orElseThrow(() -> new RuntimeException("Invalid user"));
 
         // Fetch routine template
         RoutineTemplate template = (RoutineTemplate) routineRepository.findById(routineTemplateId).orElseThrow(() -> new RuntimeException("Invalid routine template"));
