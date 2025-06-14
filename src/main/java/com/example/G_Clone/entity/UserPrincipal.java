@@ -1,5 +1,6 @@
 package com.example.G_Clone.entity;
 
+import com.example.G_Clone.entity.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,7 +1,11 @@
 package com.example.G_Clone.controller;
 
 
-import com.example.G_Clone.entity.*;
+import com.example.G_Clone.entity.exercise.Exercise;
+import com.example.G_Clone.entity.routine.RoutineTemplate;
+import com.example.G_Clone.entity.user.LoginRequest;
+import com.example.G_Clone.entity.user.User;
+import com.example.G_Clone.entity.workout.Workout;
 import com.example.G_Clone.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

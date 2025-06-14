@@ -1,4 +1,4 @@
-package com.example.G_Clone.entity;
+package com.example.G_Clone.entity.user;
 
 public class Height {
     private int feet;

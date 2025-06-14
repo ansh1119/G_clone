@@ -1,4 +1,4 @@
-package com.example.G_Clone.entity;
+package com.example.G_Clone.entity.exercise;
 
 
 
@@ -24,7 +24,7 @@ public class Exercise {
     public Exercise() {}
 
     public Exercise(String name, List<String> primaryMuscles, List<String> secondaryMuscles,
-                            String instructions, String difficulty, String type) {
+                    String instructions, String difficulty, String type) {
         this.name = name;
         this.primaryMuscles = primaryMuscles;
         this.secondaryMuscles = secondaryMuscles;

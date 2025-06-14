@@ -1,7 +1,12 @@
 package com.example.G_Clone.service;
 
 
-import com.example.G_Clone.entity.*;
+import com.example.G_Clone.entity.exercise.Exercise;
+import com.example.G_Clone.entity.routine.RoutineTemplate;
+import com.example.G_Clone.entity.routine.UserRoutine;
+import com.example.G_Clone.entity.user.LoginRequest;
+import com.example.G_Clone.entity.user.User;
+import com.example.G_Clone.entity.workout.Workout;
 import com.example.G_Clone.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -83,7 +88,7 @@ public class UserService {
         User user = repository.findById(email).orElseThrow(() -> new RuntimeException("Invalid user"));
 
         // Fetch routine template
-        RoutineTemplate template = (RoutineTemplate) routineRepository.findById(routineTemplateId).orElseThrow(() -> new RuntimeException("Invalid routine template"));
+        RoutineTemplate template = routineRepository.findById(routineTemplateId).orElseThrow(() -> new RuntimeException("Invalid routine template"));
 
         // Create a new UserRoutine from the template
         UserRoutine userRoutine = new UserRoutine();

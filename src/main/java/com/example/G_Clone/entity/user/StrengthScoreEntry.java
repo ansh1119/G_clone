@@ -1,4 +1,4 @@
-package com.example.G_Clone.entity;
+package com.example.G_Clone.entity.user;
 
 import java.util.Date;
 

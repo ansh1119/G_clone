@@ -24,4 +24,6 @@ public class UserController {
         System.out.println("from controller "+email);
         userService.chooseRoutine(email, routineID);
     }
+
+
 }

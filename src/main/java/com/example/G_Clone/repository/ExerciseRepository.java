@@ -1,7 +1,6 @@
 package com.example.G_Clone.repository;
 
-import com.example.G_Clone.entity.Exercise;
-import com.example.G_Clone.entity.RoutineTemplate;
+import com.example.G_Clone.entity.exercise.Exercise;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

@@ -1,4 +1,4 @@
-package com.example.G_Clone.entity;
+package com.example.G_Clone.entity.user;
 
 
 import org.springframework.data.annotation.Id;
@@ -30,8 +30,9 @@ public class User {
     private List<StrengthScoreEntry> strengthScoreHistory;
     private Map<String, Float> muscleStrengthScores;
     private Map<String, Date> muscleRecoveryStatus;
+    private int currentWorkoutNumber;
 
-    public User(String name,String email, String password, String profileImage, int age, Height height, String gender, int weight, int weeklyGoal, ObjectId currentRoutineId, List<ObjectId> workoutIds, List<ObjectId> friendIds, List<ObjectId> favoriteWorkoutIds, float bmi, float currentStrengthScore, List<StrengthScoreEntry> strengthScoreHistory, Map<String, Float> muscleStrengthScores, Map<String, Date> muscleRecoveryStatus) {
+    public User(String name,String email, String password, String profileImage, int age, Height height, String gender, int weight, int weeklyGoal, ObjectId currentRoutineId, List<ObjectId> workoutIds, List<ObjectId> friendIds, List<ObjectId> favoriteWorkoutIds, float bmi, float currentStrengthScore, List<StrengthScoreEntry> strengthScoreHistory, Map<String, Float> muscleStrengthScores, Map<String, Date> muscleRecoveryStatus,int currentWorkoutNumber) {
         this.name=name;
         this.email = email;
         this.password = password;
@@ -50,29 +51,8 @@ public class User {
         this.strengthScoreHistory = strengthScoreHistory;
         this.muscleStrengthScores = muscleStrengthScores;
         this.muscleRecoveryStatus = muscleRecoveryStatus;
+        this.currentWorkoutNumber=currentWorkoutNumber;
     }
-
-//    public User( String name,String email, String password, String profileImage, int age, Height height, String gender, int weight, int weeklyGoal, ObjectId currentRoutineId, List<ObjectId> workoutIds, List<ObjectId> friendIds, List<ObjectId> favoriteWorkoutIds, float bmi, float currentStrengthScore, List<StrengthScoreEntry> strengthScoreHistory, Map<String, Float> muscleStrengthScores, Map<String, Date> muscleRecoveryStatus) {
-//        this.email = email;
-//        this.name=name;
-//        this.password = password;
-//        this.profileImage = profileImage;
-//        this.age = age;
-//        this.height = height;
-//        this.gender = gender;
-//        this.weight = weight;
-//        this.weeklyGoal = weeklyGoal;
-//        this.currentRoutineId = currentRoutineId;
-//        this.workoutIds = workoutIds;
-//        this.friendIds = friendIds;
-//        this.favoriteWorkoutIds = favoriteWorkoutIds;
-//        this.bmi = bmi;
-//        this.currentStrengthScore = currentStrengthScore;
-//        this.strengthScoreHistory = strengthScoreHistory;
-//        this.muscleStrengthScores = muscleStrengthScores;
-//        this.muscleRecoveryStatus = muscleRecoveryStatus;
-//    }
-
 
     public User(){}
 
@@ -84,13 +64,13 @@ public class User {
         this.name = name;
     }
 
-//    public ObjectId getId() {
-//        return id;
-//    }
-//
-//    public void setId(ObjectId id) {
-//        this.id = id;
-//    }
+    public int getCurrentWorkoutNumber() {
+        return currentWorkoutNumber;
+    }
+
+    public void setCurrentWorkoutNumber(int currentWorkoutNumber) {
+        this.currentWorkoutNumber = currentWorkoutNumber;
+    }
 
     public String getEmail() {
         return email;

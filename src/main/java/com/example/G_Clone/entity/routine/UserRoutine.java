@@ -1,4 +1,4 @@
-package com.example.G_Clone.entity;
+package com.example.G_Clone.entity.routine;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;

@@ -1,4 +1,4 @@
-package com.example.G_Clone.entity;
+package com.example.G_Clone.entity.workout;
 
 
 import org.bson.types.ObjectId;
