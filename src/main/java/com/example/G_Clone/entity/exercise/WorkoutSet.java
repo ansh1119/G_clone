@@ -1,4 +1,4 @@
-package com.example.G_Clone.entity.workout;
+package com.example.G_Clone.entity.exercise;
 
 
 public class WorkoutSet {
@@ -56,6 +56,7 @@ public class WorkoutSet {
     public void setIsCompleted(boolean completed) {
         isCompleted = completed;
     }
+
 
     // Getters and setters
 }

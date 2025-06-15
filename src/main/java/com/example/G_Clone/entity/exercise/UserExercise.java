@@ -1,6 +1,5 @@
 package com.example.G_Clone.entity.exercise;
 
-import com.example.G_Clone.entity.workout.WorkoutSet;
 import java.util.List;
 
 

@@ -5,33 +5,44 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Document(collection = "users")
 public class User {
 
-    private String name;
     @Id
     private String email;
+
+    private String name;
     private String password;
     private String profileImage;
     private int age;
     private Height height;
     private String gender;
     private int weight;
+    private float bmi;
     private int weeklyGoal;
+
     private ObjectId currentRoutineId;
     private List<ObjectId> workoutIds;
     private List<ObjectId> friendIds;
     private List<ObjectId> favoriteWorkoutIds;
-    private float bmi;
-    private float currentStrengthScore;
-    private List<StrengthScoreEntry> strengthScoreHistory;
-    private Map<String, Float> muscleStrengthScores;
-    private Map<String, Date> muscleRecoveryStatus;
+
     private int currentWorkoutNumber;
 
+    // Current strength score (avg across muscle groups)
+    private float currentStrengthScore;
+
+    // Historical strength scores per muscle group
+    private Map<String, List<StrengthScoreEntry>> strengthScores = new HashMap<>();
+
+    // Latest/average score per muscle group (for quick dashboard access)
+    private Map<String, Float> muscleStrengthScores = new HashMap<>();
+
+    // Recovery tracking
+    private Map<String, Date> muscleRecoveryStatus = new HashMap<>();
     public User(String name,String email, String password, String profileImage, int age, Height height, String gender, int weight, int weeklyGoal, ObjectId currentRoutineId, List<ObjectId> workoutIds, List<ObjectId> friendIds, List<ObjectId> favoriteWorkoutIds, float bmi, float currentStrengthScore, List<StrengthScoreEntry> strengthScoreHistory, Map<String, Float> muscleStrengthScores, Map<String, Date> muscleRecoveryStatus,int currentWorkoutNumber) {
         this.name=name;
         this.email = email;
@@ -48,7 +59,6 @@ public class User {
         this.favoriteWorkoutIds = favoriteWorkoutIds;
         this.bmi = bmi;
         this.currentStrengthScore = currentStrengthScore;
-        this.strengthScoreHistory = strengthScoreHistory;
         this.muscleStrengthScores = muscleStrengthScores;
         this.muscleRecoveryStatus = muscleRecoveryStatus;
         this.currentWorkoutNumber=currentWorkoutNumber;
@@ -58,6 +68,14 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public Map<String, List<StrengthScoreEntry>> getStrengthScores() {
+        return strengthScores;
+    }
+
+    public void setStrengthScores(Map<String, List<StrengthScoreEntry>> strengthScores) {
+        this.strengthScores = strengthScores;
     }
 
     public void setName(String name) {
@@ -182,14 +200,6 @@ public class User {
 
     public void setCurrentStrengthScore(float currentStrengthScore) {
         this.currentStrengthScore = currentStrengthScore;
-    }
-
-    public List<StrengthScoreEntry> getStrengthScoreHistory() {
-        return strengthScoreHistory;
-    }
-
-    public void setStrengthScoreHistory(List<StrengthScoreEntry> strengthScoreHistory) {
-        this.strengthScoreHistory = strengthScoreHistory;
     }
 
     public Map<String, Float> getMuscleStrengthScores() {

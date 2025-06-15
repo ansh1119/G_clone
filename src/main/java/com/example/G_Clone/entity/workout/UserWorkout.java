@@ -2,12 +2,15 @@ package com.example.G_Clone.entity.workout;
 
 
 import com.example.G_Clone.entity.exercise.UserExercise;
+import com.example.G_Clone.entity.exercise.UserExerciseStats;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Document(collection = "user_workouts")
 public class UserWorkout {
@@ -19,8 +22,9 @@ public class UserWorkout {
     private ObjectId routineId; // optional: to trace the original routine/template
     private int dayNumber; // e.g., 0 = Push, 1 = Pull, etc.
     private String workoutName;
-
     private List<UserExercise> exercises;
+    @Transient // Do NOT store this in MongoDB
+    private Map<String, UserExerciseStats> exerciseStatsMap;
 
     private boolean completed;
     private Date completionDate;
@@ -39,6 +43,14 @@ public class UserWorkout {
         this.completed = completed;
         this.completionDate = completionDate;
         this.notes = notes;
+    }
+
+    public Map<String, UserExerciseStats> getExerciseStatsMap() {
+        return exerciseStatsMap;
+    }
+
+    public void setExerciseStatsMap(Map<String, UserExerciseStats> exerciseStatsMap) {
+        this.exerciseStatsMap = exerciseStatsMap;
     }
 
     public ObjectId getId() {
